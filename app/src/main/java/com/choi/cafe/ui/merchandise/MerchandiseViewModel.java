@@ -1,4 +1,4 @@
-package com.choi.cafe.ui.Merchandise;
+package com.choi.cafe.ui.merchandise;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
