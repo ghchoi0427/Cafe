@@ -17,17 +17,17 @@ import com.choi.cafe.databinding.FragmentMembershipBinding;
 public class MembershipFragment extends Fragment {
 
     private MembershipViewModel membershipViewModel;
-    private FragmentMembershipBinding binding;
+    private FragmentMembershipBinding fragmentMembershipBinding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         membershipViewModel =
                 new ViewModelProvider(this).get(MembershipViewModel.class);
 
-        binding = FragmentMembershipBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        fragmentMembershipBinding = FragmentMembershipBinding.inflate(inflater, container, false);
+        View root = fragmentMembershipBinding.getRoot();
 
-        final TextView textView = binding.textMembership;
+        final TextView textView = fragmentMembershipBinding.textMembership;
         membershipViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -40,6 +40,6 @@ public class MembershipFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
+        fragmentMembershipBinding = null;
     }
 }
