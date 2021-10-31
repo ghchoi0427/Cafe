@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import android.util.Patterns;
-
 import com.choi.cafe.data.LoginRepository;
 import com.choi.cafe.data.Result;
 import com.choi.cafe.data.model.LoggedInUser;
@@ -36,6 +34,7 @@ public class LoginViewModel extends ViewModel {
         if (result instanceof Result.Success) {
             LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
             loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
+            loginResult.setValue(new LoginResult(getUserType(username)));
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));
         }
@@ -65,5 +64,15 @@ public class LoginViewModel extends ViewModel {
     // A placeholder password validation check
     private boolean isPasswordValid(String password) {
         return password != null && password.trim().length() > 5;
+    }
+
+    private UserType getUserType(String username) {
+        if (username.startsWith("C")) {
+            return UserType.Customer;
+        }
+        if (username.startsWith("S")) {
+            return UserType.Staff;
+        }
+        return null;
     }
 }
