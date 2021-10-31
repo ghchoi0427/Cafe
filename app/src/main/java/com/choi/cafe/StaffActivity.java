@@ -3,6 +3,7 @@ package com.choi.cafe;
 import android.os.Bundle;
 import android.view.Menu;
 
+import com.choi.cafe.databinding.ActivityStaffBinding;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -13,25 +14,23 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.choi.cafe.databinding.ActivityMainBinding;
-
-public class MainActivity extends AppCompatActivity {
+public class StaffActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private ActivityMainBinding binding;
+    private ActivityStaffBinding activityStaffBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        activityStaffBinding = ActivityStaffBinding.inflate(getLayoutInflater());
+        setContentView(activityStaffBinding.getRoot());
 
-        setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        setSupportActionBar(activityStaffBinding.appBarMainStaff.toolbar);
+        activityStaffBinding.appBarMainStaff.fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
-        DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
+        DrawerLayout drawer = activityStaffBinding.drawerLayout;
+        NavigationView navigationView = activityStaffBinding.navViewStaff;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
