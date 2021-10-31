@@ -26,11 +26,11 @@ public class StaffActivity extends AppCompatActivity {
         activityStaffBinding = ActivityStaffBinding.inflate(getLayoutInflater());
         setContentView(activityStaffBinding.getRoot());
 
-        setSupportActionBar(activityStaffBinding.appBarMainStaff.toolbar);
-        activityStaffBinding.appBarMainStaff.fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        setSupportActionBar(activityStaffBinding.appBarMain.toolbar);
+        activityStaffBinding.appBarMain.fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
         DrawerLayout drawer = activityStaffBinding.drawerLayout;
-        NavigationView navigationView = activityStaffBinding.navViewStaff;
+        NavigationView navigationView = activityStaffBinding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
