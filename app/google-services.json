@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "465037615858",
+    "project_id": "ddatabasedesign",
+    "storage_bucket": "ddatabasedesign.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465037615858:android:c03011531ec4176281266b",
+        "android_client_info": {
+          "package_name": "com.choi.cafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "465037615858-r276dgl13chh4ean0k6l6e9rri1o244a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.choi.cafe",
+            "certificate_hash": "3b015583a73e8bd401cce0d32f3930a9db80cdfc"
+          }
+        },
+        {
+          "client_id": "465037615858-115vpt50a0a0bpmhpttt8hj2bm4cbd5u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpt2_dQra9Sjf39CxxLhE1m4KI9JUute0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "465037615858-115vpt50a0a0bpmhpttt8hj2bm4cbd5u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
