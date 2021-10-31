@@ -33,8 +33,7 @@ public class LoginViewModel extends ViewModel {
 
         if (result instanceof Result.Success) {
             LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
-            loginResult.setValue(new LoginResult(getUserType(username)));
+            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName(), getUserType(username))));
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));
         }
@@ -57,8 +56,9 @@ public class LoginViewModel extends ViewModel {
         }
         if (username.startsWith("C") || username.startsWith("S")) {
             return username.trim().length() == 5;
-        } else return false;
+        }
 
+        return false;
     }
 
     // A placeholder password validation check
