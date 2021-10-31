@@ -22,16 +22,18 @@ public class CustomerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer);
 
         activityCustomerBinding = ActivityCustomerBinding.inflate(getLayoutInflater());
         setContentView(activityCustomerBinding.getRoot());
 
-        setSupportActionBar(activityCustomerBinding.appBarMainCustomer.toolbar);
-        activityCustomerBinding.appBarMainCustomer.fab.setOnClickListener(view -> Snackbar.make(view, "own activity here", Snackbar.LENGTH_LONG).setAction("Action", null).show());
+        setSupportActionBar(activityCustomerBinding.appBarMain.toolbar);
+        activityCustomerBinding.appBarMain.fab.setOnClickListener(view -> Snackbar.make(view, "own activity here", Snackbar.LENGTH_LONG).setAction("Action", null).show());
         DrawerLayout drawer = activityCustomerBinding.drawerLayout;
-        NavigationView navigationView = activityCustomerBinding.navViewCustomer;
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_membership, R.id.nav_merchandise).build();
+        NavigationView navigationView = activityCustomerBinding.navView;
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_membership, R.id.nav_merchandise)
+                .setDrawerLayout(drawer)
+                .build();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
