@@ -1,4 +1,4 @@
-package com.choi.cafe.ui.login;
+package com.choi.cafe.data.model;
 
 public enum UserType {
     Staff, Customer
