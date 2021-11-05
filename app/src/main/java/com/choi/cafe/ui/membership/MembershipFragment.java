@@ -28,12 +28,7 @@ public class MembershipFragment extends Fragment {
         View root = fragmentMembershipBinding.getRoot();
 
         final TextView textView = fragmentMembershipBinding.textMembership;
-        membershipViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        membershipViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
