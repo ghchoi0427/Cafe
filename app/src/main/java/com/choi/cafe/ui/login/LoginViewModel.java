@@ -8,6 +8,7 @@ import com.choi.cafe.data.LoginRepository;
 import com.choi.cafe.data.Result;
 import com.choi.cafe.data.model.LoggedInUser;
 import com.choi.cafe.R;
+import com.choi.cafe.data.model.UserType;
 
 public class LoginViewModel extends ViewModel {
 

@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.choi.cafe.CustomerActivity;
 import com.choi.cafe.R;
 import com.choi.cafe.StaffActivity;
+import com.choi.cafe.data.model.UserType;
 import com.choi.cafe.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
@@ -107,7 +108,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
-        // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
         if (model.getUserType().equals(UserType.Staff)) {
             startActivity(new Intent(this, StaffActivity.class));

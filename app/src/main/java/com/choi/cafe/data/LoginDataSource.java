@@ -1,6 +1,7 @@
 package com.choi.cafe.data;
 
 import com.choi.cafe.data.model.LoggedInUser;
+import com.choi.cafe.data.model.UserType;
 
 import java.io.IOException;
 
@@ -13,11 +14,12 @@ public class LoginDataSource {
 
         try {
             // TODO: handle loggedInUser authentication
-            LoggedInUser fakeUser =
+            LoggedInUser loggedInUser =
                     new LoggedInUser(
                             java.util.UUID.randomUUID().toString(),
-                            "Jane Doe");
-            return new Result.Success<>(fakeUser);
+                            username, UserType.Staff);
+            //TODO: set username to actual user name retrieved from server
+            return new Result.Success<>(loggedInUser);
         } catch (Exception e) {
             return new Result.Error(new IOException("Error logging in", e));
         }

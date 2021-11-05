@@ -1,7 +1,5 @@
 package com.choi.cafe.data.model;
 
-import com.choi.cafe.ui.login.UserType;
-
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
