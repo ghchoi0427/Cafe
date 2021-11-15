@@ -4,7 +4,13 @@ public class Merchandise {
 
     private String serialNumber;
     private String name;
-    private int price;
+    private String price;
+
+    public Merchandise(String serialNumber, String name, String price) {
+        this.serialNumber = serialNumber;
+        this.name = name;
+        this.price = price;
+    }
 
     public String getSerialNumber() {
         return serialNumber;
@@ -22,11 +28,11 @@ public class Merchandise {
         this.name = name;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 }
