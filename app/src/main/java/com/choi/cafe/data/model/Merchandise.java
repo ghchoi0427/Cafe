@@ -12,6 +12,9 @@ public class Merchandise {
         this.price = price;
     }
 
+    public Merchandise() {
+    }
+
     public String getSerialNumber() {
         return serialNumber;
     }
