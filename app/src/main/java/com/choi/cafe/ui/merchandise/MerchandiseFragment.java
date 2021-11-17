@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableArrayList;
@@ -13,8 +12,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.choi.cafe.R;
 import com.choi.cafe.data.model.Merchandise;
 import com.choi.cafe.databinding.FragmentMerchandiseBinding;
+import com.choi.cafe.firebase.FireStore;
 import com.choi.cafe.ui.adapter.MerchandiseAdapter;
 
 public class MerchandiseFragment extends Fragment {
@@ -25,6 +26,7 @@ public class MerchandiseFragment extends Fragment {
 
     private com.choi.cafe.ui.merchandise.MerchandiseViewModel merchandiseViewModel;
     private FragmentMerchandiseBinding binding;
+    FireStore fireStore;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -32,15 +34,15 @@ public class MerchandiseFragment extends Fragment {
 
         binding = FragmentMerchandiseBinding.inflate(inflater, container, false);
 
-        final TextView textView = binding.textMerchandise;
         final RecyclerView recyclerMerchandise = binding.recyclerMerchandise;
         recyclerMerchandise.setLayoutManager(new LinearLayoutManager(getContext()));
         MerchandiseAdapter merchandiseAdapter = new MerchandiseAdapter();
         recyclerMerchandise.setAdapter(merchandiseAdapter);
-        merchandiseViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
-
         setItems(recyclerMerchandise, merchandiseViewModel.getMerchandiseList());
+
+        fireStore = new FireStore();
+        fireStore.getAllData(getString(R.string.collection_merchandise), recyclerMerchandise);
+
         return binding.getRoot();
     }
 
