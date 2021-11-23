@@ -1,9 +1,10 @@
-package com.choi.cafe.ui.adapter;
+package com.choi.cafe.ui.adapter.merchandise;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.ObservableArrayList;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,7 +27,7 @@ public class MerchandiseAdapter extends RecyclerView.Adapter<MerchandiseViewHold
         this.merchandises = merchandises;
     }
 
-    public void updateItems(ArrayList<Merchandise> merchandiseList) {
+    public void updateItems(ObservableArrayList<Merchandise> merchandiseList) {
         MerchandiseItemDiffCallBack callback = new MerchandiseItemDiffCallBack(this.merchandises, merchandiseList);
         DiffUtil.DiffResult result = DiffUtil.calculateDiff(callback);
 

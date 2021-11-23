@@ -1,4 +1,4 @@
-package com.choi.cafe.ui.adapter;
+package com.choi.cafe.ui.adapter.merchandise;
 
 import androidx.recyclerview.widget.DiffUtil;
 
@@ -40,7 +40,7 @@ public class MerchandiseItemDiffCallBack extends DiffUtil.Callback {
 
         if (!oldItem.getName().equals(newItem.getName()))
             return false;
-        if (!(oldItem.getPrice() == newItem.getPrice()))
+        if (!(oldItem.getPrice().equals(newItem.getPrice())))
             return false;
         if (!oldItem.getSerialNumber().equals(newItem.getSerialNumber()))
             return false;

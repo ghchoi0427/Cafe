@@ -1,4 +1,4 @@
-package com.choi.cafe.ui.adapter;
+package com.choi.cafe.ui.adapter.merchandise;
 
 import android.view.View;
 
