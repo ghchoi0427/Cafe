@@ -1,10 +1,17 @@
 package com.choi.cafe.data.model;
 
-public class MemberShip {
+public class Membership {
 
     private String membershipID;
-    private int membershipPoint;
+    private String membershipPoint;
     private Customer owner;
+
+    public Membership(){}
+    public Membership(String membershipID, String membershipPoint, Customer owner) {
+        this.membershipID = membershipID;
+        this.membershipPoint = membershipPoint;
+        this.owner = owner;
+    }
 
     public String getMembershipID() {
         return membershipID;
@@ -14,11 +21,11 @@ public class MemberShip {
         this.membershipID = membershipID;
     }
 
-    public int getMembershipPoint() {
+    public String getMembershipPoint() {
         return membershipPoint;
     }
 
-    public void setMembershipPoint(int membershipPoint) {
+    public void setMembershipPoint(String membershipPoint) {
         this.membershipPoint = membershipPoint;
     }
 
