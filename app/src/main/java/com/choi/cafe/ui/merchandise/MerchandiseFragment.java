@@ -43,7 +43,6 @@ public class MerchandiseFragment extends Fragment {
         recyclerMerchandise.setLayoutManager(new LinearLayoutManager(getContext()));
         MerchandiseAdapter merchandiseAdapter = new MerchandiseAdapter();
         recyclerMerchandise.setAdapter(merchandiseAdapter);
-        setItems(recyclerMerchandise, merchandiseViewModel.getMerchandiseList());
 
         final Button button = binding.buttonInput;
         button.setOnClickListener(this::inputDialog);
