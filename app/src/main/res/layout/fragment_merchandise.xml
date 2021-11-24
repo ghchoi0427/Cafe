@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context=".ui.merchandise.MerchandiseFragment">
 
+    <Button
+        android:id="@+id/button_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_merchandise"
         android:layout_width="match_parent"
