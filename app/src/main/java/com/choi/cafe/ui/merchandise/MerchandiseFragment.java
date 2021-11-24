@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.choi.cafe.R;
 import com.choi.cafe.data.model.Merchandise;
+import com.choi.cafe.databinding.DialogInputMerchandiseBinding;
 import com.choi.cafe.databinding.FragmentMerchandiseBinding;
 import com.choi.cafe.firebase.FireStore;
 import com.choi.cafe.ui.adapter.merchandise.MerchandiseAdapter;
@@ -29,6 +30,7 @@ public class MerchandiseFragment extends Fragment {
 
     private com.choi.cafe.ui.merchandise.MerchandiseViewModel merchandiseViewModel;
     private FragmentMerchandiseBinding binding;
+    private DialogInputMerchandiseBinding inputMerchandiseBinding;
     FireStore fireStore;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -70,7 +72,8 @@ public class MerchandiseFragment extends Fragment {
     }
 
     public void inputDialog(View v) {
-        View dialogView = getLayoutInflater().inflate(R.layout.dialog_input_merchandise, null);
+        inputMerchandiseBinding = DialogInputMerchandiseBinding.inflate(getLayoutInflater(), (ViewGroup) v.getParent(), false);
+        View dialogView = inputMerchandiseBinding.getRoot();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
         builder.setView(dialogView);
@@ -78,20 +81,19 @@ public class MerchandiseFragment extends Fragment {
         final AlertDialog alertDialog = builder.create();
         alertDialog.show();
 
-        Button buttonConfirm = dialogView.findViewById(R.id.btn_confirm);
+        final Button buttonConfirm = inputMerchandiseBinding.buttonConfirm;
         buttonConfirm.setOnClickListener(view -> {
-            EditText editName = dialogView.findViewById(R.id.edit_name);
-            EditText editNumber = dialogView.findViewById(R.id.edit_number);
-            EditText editPrice = dialogView.findViewById(R.id.edit_price);
+            EditText editName = inputMerchandiseBinding.editName;
+            EditText editNumber = inputMerchandiseBinding.editNumber;
+            EditText editPrice = inputMerchandiseBinding.editPrice;
 
             String name = editName.getText().toString();
             String number = editNumber.getText().toString();
             String price = editPrice.getText().toString();
 
             Merchandise merchandise = new Merchandise(number, name, price);
-            fireStore.setData("merchandise", merchandise);
+            fireStore.setData(getString(R.string.collection_merchandise), merchandise);
             //TODO: update list
-
             alertDialog.dismiss();
         });
     }
