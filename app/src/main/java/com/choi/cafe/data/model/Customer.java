@@ -6,6 +6,12 @@ public class Customer {
     private String name;
     private String telNumber;
 
+    public Customer(String customerNumber, String name, String telNumber) {
+        this.customerNumber = customerNumber;
+        this.name = name;
+        this.telNumber = telNumber;
+    }
+
     public String getCustomerNumber() {
         return customerNumber;
     }
