@@ -1,9 +1,12 @@
 package com.choi.cafe.ui.merchandise;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableArrayList;
@@ -16,7 +19,7 @@ import com.choi.cafe.R;
 import com.choi.cafe.data.model.Merchandise;
 import com.choi.cafe.databinding.FragmentMerchandiseBinding;
 import com.choi.cafe.firebase.FireStore;
-import com.choi.cafe.ui.adapter.MerchandiseAdapter;
+import com.choi.cafe.ui.adapter.merchandise.MerchandiseAdapter;
 
 public class MerchandiseFragment extends Fragment {
 
@@ -40,8 +43,11 @@ public class MerchandiseFragment extends Fragment {
         recyclerMerchandise.setAdapter(merchandiseAdapter);
         setItems(recyclerMerchandise, merchandiseViewModel.getMerchandiseList());
 
+        final Button button = binding.buttonInput;
+        button.setOnClickListener(this::inputDialog);
+
         fireStore = new FireStore();
-        fireStore.getAllData(getString(R.string.collection_merchandise), recyclerMerchandise);
+        fireStore.getAllData(getString(R.string.collection_merchandise), recyclerMerchandise, this);
 
         return binding.getRoot();
     }
@@ -61,5 +67,32 @@ public class MerchandiseFragment extends Fragment {
             adapter = (MerchandiseAdapter) recyclerView.getAdapter();
         }
         adapter.updateItems(merchandiseList);
+    }
+
+    public void inputDialog(View v) {
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_input_merchandise, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        builder.setView(dialogView);
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+        Button buttonConfirm = dialogView.findViewById(R.id.btn_confirm);
+        buttonConfirm.setOnClickListener(view -> {
+            EditText editName = dialogView.findViewById(R.id.edit_name);
+            EditText editNumber = dialogView.findViewById(R.id.edit_number);
+            EditText editPrice = dialogView.findViewById(R.id.edit_price);
+
+            String name = editName.getText().toString();
+            String number = editNumber.getText().toString();
+            String price = editPrice.getText().toString();
+
+            Merchandise merchandise = new Merchandise(number, name, price);
+            fireStore.setData("merchandise", merchandise);
+            //TODO: update list
+
+            alertDialog.dismiss();
+        });
     }
 }
