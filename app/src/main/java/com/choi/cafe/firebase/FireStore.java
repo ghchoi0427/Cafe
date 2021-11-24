@@ -77,4 +77,8 @@ public class FireStore {
         }
     }
 
+    public void setData(String collection, Object object) {
+        db.collection(collection).add(object).addOnCompleteListener(task -> Log.d("tester", task.toString()));
+    }
+
 }
