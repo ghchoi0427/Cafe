@@ -90,8 +90,10 @@ public class MerchandiseFragment extends Fragment {
             String number = editNumber.getText().toString();
             String price = editPrice.getText().toString();
 
+
             Merchandise merchandise = new Merchandise(number, name, price);
-            fireStore.setData(getString(R.string.collection_merchandise), merchandise);
+            merchandiseViewModel.sendQuery(getString(R.string.collection_merchandise), merchandise);
+
             //TODO: update list
             alertDialog.dismiss();
         });
