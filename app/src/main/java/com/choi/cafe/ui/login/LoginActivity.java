@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.choi.cafe.CustomerActivity;
 import com.choi.cafe.R;
+import com.choi.cafe.RegisterActivity;
 import com.choi.cafe.StaffActivity;
 import com.choi.cafe.data.model.UserType;
 import com.choi.cafe.databinding.ActivityLoginBinding;
@@ -104,6 +105,15 @@ public class LoginActivity extends AppCompatActivity {
             loginViewModel.login(usernameEditText.getText().toString(),
                     passwordEditText.getText().toString());
         });
+
+        binding.btnStaffRegister.setOnClickListener(view -> {
+            startActivity(new Intent(this, RegisterActivity.class).putExtra("userType","staff"));
+        });
+
+        binding.btnCustomerRegister.setOnClickListener(view -> {
+            startActivity(new Intent(this, RegisterActivity.class).putExtra("userType","customer"));
+        });
+
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
