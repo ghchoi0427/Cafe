@@ -5,8 +5,16 @@ public class Staff {
     private String staffNumber;
     private String name;
     private String sex;
-    private int age;
+    private String age;
     private String position;
+
+    public Staff(String staffNumber, String name, String sex, String age, String position) {
+        this.staffNumber = staffNumber;
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+        this.position = position;
+    }
 
     public String getStaffNumber() {
         return staffNumber;
@@ -32,11 +40,11 @@ public class Staff {
         this.sex = sex;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
