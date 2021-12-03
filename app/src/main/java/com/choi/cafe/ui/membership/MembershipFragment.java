@@ -43,7 +43,7 @@ public class MembershipFragment extends Fragment {
         setItems(recyclerMembership, membershipViewModel.getMembershipList());
 
         final Button buttonInput = fragmentMembershipBinding.buttonInput;
-        buttonInput.setOnClickListener(this::inputDialog);
+        buttonInput.setOnClickListener(view -> inputDialog(getView(), recyclerMembership));
 
         fireStore = new FireStore();
         fireStore.getAllData(getString(R.string.collection_membership), recyclerMembership, this);
@@ -68,7 +68,7 @@ public class MembershipFragment extends Fragment {
         adapter.updateItems(membershipList);
     }
 
-    public void inputDialog(View v) {
+    public void inputDialog(View v, RecyclerView recyclerMembership) {
         inputMembershipBinding = DialogInputMembershipBinding.inflate(getLayoutInflater(), (ViewGroup) v.getParent(), false);
         View dialogView = inputMembershipBinding.getRoot();
 
@@ -89,6 +89,7 @@ public class MembershipFragment extends Fragment {
             fireStore.setData(getString(R.string.collection_membership), membership);
             //TODO: update list
             alertDialog.dismiss();
+            fireStore.getAllData(getString(R.string.collection_membership), recyclerMembership, this);
         });
     }
 }
