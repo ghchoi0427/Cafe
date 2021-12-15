@@ -107,11 +107,11 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         binding.btnStaffRegister.setOnClickListener(view -> {
-            startActivity(new Intent(this, RegisterActivity.class).putExtra("userType","staff"));
+            startActivity(new Intent(this, RegisterActivity.class).putExtra("userType", "staff"));
         });
 
         binding.btnCustomerRegister.setOnClickListener(view -> {
-            startActivity(new Intent(this, RegisterActivity.class).putExtra("userType","customer"));
+            startActivity(new Intent(this, RegisterActivity.class).putExtra("userType", "customer"));
         });
 
     }
@@ -120,10 +120,10 @@ public class LoginActivity extends AppCompatActivity {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
         if (model.getUserType().equals(UserType.Staff)) {
-            startActivity(new Intent(this, StaffActivity.class));
+            startActivity(new Intent(this, StaffActivity.class).putExtra("serialNumber", model.getDisplayName()));
         }
         if (model.getUserType().equals(UserType.Customer)) {
-            startActivity(new Intent(this, CustomerActivity.class));
+            startActivity(new Intent(this, CustomerActivity.class).putExtra("serialNumber", model.getDisplayName()));
         }
     }
 
