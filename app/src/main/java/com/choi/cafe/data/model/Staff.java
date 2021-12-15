@@ -16,6 +16,9 @@ public class Staff {
         this.position = position;
     }
 
+    public Staff() {
+    }
+
     public String getStaffNumber() {
         return staffNumber;
     }
